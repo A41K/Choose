@@ -8,25 +8,28 @@ def scrape_tiktok_collection(collection_url):
         page = browser.new_page()
         page.goto(collection_url)
 
-        # Scroll to load more videos
-        for _ in range(5):  # Adjust scroll times if needed
-            page.mouse.wheel(0, 5000)
-            time.sleep(2)
-
-        # Extract video URLs
-        video_elements = page.locator("a[href*='/video/']").all()
         video_ids = set()
+        last_count = 0
 
-        for element in video_elements:
-            href = element.get_attribute("href")
-            match = re.search(r"/video/(\d+)", href)
-            if match:
-                video_ids.add(match.group(1))
+        while True:
+            page.mouse.wheel(0, 5000)  # Scroll down
+            time.sleep(3)  # Allow time to load more content
+
+            video_elements = page.locator("a[href*='/video/']").all()
+            for element in video_elements:
+                href = element.get_attribute("href")
+                match = re.search(r"/video/(\d+)", href)
+                if match:
+                    video_ids.add(match.group(1))
+
+            if len(video_ids) == last_count:  # Stop if no new videos are found
+                break
+            last_count = len(video_ids)
 
         browser.close()
         return list(video_ids)
 
-# Example Usage
+# Example usage:
 collection_url = "https://www.tiktok.com/@a41k_/collection/köszönöm-7112665464664296197?is_from_webapp=1&sender_device=pc"
 video_ids = scrape_tiktok_collection(collection_url)
-print(video_ids)  # Output video IDs for use in your HTML
+print(video_ids)  # Use these IDs in your HTML
