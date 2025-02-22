@@ -114,8 +114,10 @@
 
     ];
         
-        let leftScore = 0;
-        let rightScore = 0;
+        let leftScore = localStorage.getItem('leftScore') ? parseInt(localStorage.getItem('leftScore')) : 0;
+        let rightScore = localStorage.getItem('rightScore') ? parseInt(localStorage.getItem('rightScore')) : 0;
+        document.getElementById('left-score').innerText = leftScore;
+        document.getElementById('right-score').innerText = rightScore;
         
         function getRandomVideo() {
             return tiktokCollection[Math.floor(Math.random() * tiktokCollection.length)];
@@ -138,9 +140,11 @@
         function vote(choice) {
             if (choice === 'left') {
                 leftScore++;
+                localStorage.setItem('leftScore', leftScore);
                 document.getElementById('left-score').innerText = leftScore;
             } else {
                 rightScore++;
+                localStorage.setItem('rightScore', rightScore);
                 document.getElementById('right-score').innerText = rightScore;
             }
             loadRandomVideos(); // Load new videos after voting
