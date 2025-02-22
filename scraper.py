@@ -27,6 +27,6 @@ def scrape_tiktok_collection(collection_url):
         return list(video_ids)
 
 # Example Usage
-collection_url = "https://www.tiktok.com/@a41k_/collection/Website%20Pulling%20Collection-7474224942796507927"
+collection_url = "https://www.tiktok.com/@a41k_/collection/köszönöm-7112665464664296197?is_from_webapp=1&sender_device=pc"
 video_ids = scrape_tiktok_collection(collection_url)
 print(video_ids)  # Output video IDs for use in your HTML
