@@ -30,6 +30,6 @@ def scrape_tiktok_collection(collection_url):
         return list(video_ids)
 
 # Example usage:
-collection_url = "https://www.tiktok.com/@a41k_/collection/köszönöm-7112665464664296197?is_from_webapp=1&sender_device=pc"
+collection_url = "https://www.tiktok.com/@a41k_/collection/repost-7451339507582012162?is_from_webapp=1&sender_device=pc"
 video_ids = scrape_tiktok_collection(collection_url)
 print(video_ids)  # Use these IDs in your HTML
