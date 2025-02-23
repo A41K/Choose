@@ -64,6 +64,16 @@
             font-size: 20px;
             margin-top: 10px;
         }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #000;
+            color: white;
+            }
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -103,6 +113,11 @@
         <button onclick="loadRandomVideos()">New Videos</button>
         <button class="right-btn" onclick="vote('right')">Right is Better</button>
     </div>
+
+    <footer class="footer">
+        This was made by Andrew a.k.a A41K
+    </footer>
+
     <script>
         const tiktokCollection = [    
         '7473980867585641783', '7474001998019333398', '7474002285274713374', '7469161916649213230', '7473801572116335927', '7468829954143243525', '7462423542844476715', '7474083016231357742', '7473557103576304942', '7473627744400870702', '7473599287897771286', '7473864853552172310', '7473965911372729622', '7470949974809857323',
